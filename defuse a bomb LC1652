@@ -1,0 +1,40 @@
+class Solution {
+public:
+    vector<int> decrypt(vector<int>& code, int k) {
+    int n = code.size();
+    vector<int> result(n, 0);
+    
+    // If k is positive, sum the next k elements (with wrapping)
+    if (k > 0) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 1; j <= k; j++) {
+                result[i] += code[(i + j) % n]; // Wrap around using modulo
+            }
+        }
+    }
+    // If k is negative, sum the previous k elements (with wrapping)
+    else if (k < 0) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 1; j <= -k; j++) {
+                result[i] += code[(i - j + n) % n]; // Wrap around using modulo
+            }
+        }
+    }
+    return result;
+}
+
+int main() {
+    vector<int> code = {5, 7, 1, 4};
+    int k = 3;
+    
+    vector<int> result = decrypt(code, k);
+    
+    // Output the result
+    for (int num : result) {
+        cout << num << " ";
+    }
+    
+    return 0;
+}
+    
+};
