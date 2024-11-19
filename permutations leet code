@@ -1,0 +1,58 @@
+class Solution {
+public:
+    // Custom implementation of `next_permutation`
+    void custom_next_permutation(vector<int>& nums) {
+        int n = nums.size();
+
+        // Step 1: Find the largest index i such that nums[i] < nums[i + 1]
+        int i = n - 2;
+        while (i >= 0 && nums[i] >= nums[i + 1]) {
+            --i;
+        }
+
+        // If no such i exists, the permutation is the largest
+        if (i < 0) {
+            reverse(nums.begin(), nums.end()); // Reverse to the smallest permutation
+            return; // No more permutations available
+        }
+
+        // Step 2: Find the largest index j such that nums[j] > nums[i]
+        int j = n - 1;
+        while (nums[j] <= nums[i]) {
+            --j;
+        }
+
+        // Step 3: Swap nums[i] and nums[j]
+        swap(nums[i], nums[j]);
+
+        // Step 4: Reverse the sequence from nums[i + 1] to the end
+        reverse(nums.begin() + i + 1, nums.end());
+    }
+
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>> result;
+
+        // Step 1: Sort the array to ensure starting from the smallest lexicographical order
+        sort(nums.begin(), nums.end());
+
+        // Step 2: Store the first permutation
+        result.push_back(nums);
+
+        // Step 3: Generate and store subsequent permutations
+        while (true) {
+            // Generate the next permutation
+            custom_next_permutation(nums);
+
+            // If the array is in the smallest lexicographical order after the next permutation
+            // that means all permutations are generated.
+            if (is_sorted(nums.begin(), nums.end())) {
+                break;
+            }
+
+            // Store the current permutation
+            result.push_back(nums);
+        }
+
+        return result;
+    }
+};
