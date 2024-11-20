@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int findMinFibonacciNumbers(int k) {
+        // Generate Fibonacci numbers
+        vector<int> fib = {1, 1};
+        while (fib.back() <= k) {
+            fib.push_back(fib[fib.size() - 1] + fib[fib.size() - 2]);
+        }
+        
+        // Reverse the Fibonacci array to iterate forward
+        reverse(fib.begin(), fib.end());
+        
+        int count = 0;
+        for (int i = 0; i < fib.size() && k > 0; i++) {
+            if (fib[i] <= k) {
+                k -= fib[i];
+                count++;
+            }
+        }
+        
+        return count;
+    }
+};
