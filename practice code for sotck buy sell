@@ -1,0 +1,42 @@
+class Solution {
+  public:
+    
+        // code here
+int maximumProfit(vector<int>& price) {
+    int n = price.size();
+    if (n <= 1) return 0; // Edge case: no profit possible with 0 or 1 prices
+     
+  int pro;
+  int sell1;
+       int count =0 ;
+       int buy = price[0];
+       int cnt =count;
+    for (int i = 1; i < n; i++) {
+    
+        if(buy<price[i]){
+            count++;
+        }else{
+            break;
+        }
+       
+    }
+            int sell = price[count] -price[0];
+          //  return sell;
+          int sel = price[count];
+        for (int j=count+1 ; j<n ; j++){
+            if(sel<price[j+1]){
+                 cnt+=count; 
+            }else{
+                break;
+            }
+        
+        }
+        sell1 = price[cnt]-price[count+1];
+         pro = sell+sell1;
+
+
+    return pro; // Return the maximum profit
+
+
+    }
+};
