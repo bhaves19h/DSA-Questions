@@ -1,0 +1,38 @@
+class Solution {
+  public:
+    // Function to find the majority elements in the array
+    vector<int> findMajority(vector<int>& arr) {
+        // Your code goes here.
+        vector<int> res;
+        int n = arr.size();
+        
+        for (int i = 0; i < n; i++) {
+        int count = 0; // Reset count for each element
+        
+        // Count occurrences of arr[i]
+        for (int j = 0; j < n; j++) {
+            if (arr[j] == arr[i]) {
+                count++;
+            }
+        }
+        
+        // Check if arr[i] satisfies the majority condition
+        if (count > (n / 3)) {
+            // Ensure no duplicates in the result
+    if (res.empty() || (arr[i] != res[0] ||res.size()==0)){
+                res.push_back(arr[i]);
+            }
+        }
+        
+        // If we already have two candidates, no need to continue
+         if (res.size() == 2) {
+            if(res[0] > res[1])
+                swap(res[0], res[1]);
+            break;
+        
+    }
+    }
+    
+    return res;
+    }
+};
