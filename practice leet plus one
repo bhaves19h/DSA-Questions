@@ -1,0 +1,34 @@
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        int n =digits.size();
+    int result = 0;
+    int multiplier = 1;
+
+    for (int j = n - 1; j >= 0; j--) {
+        result += digits[j] * multiplier;
+        multiplier *= 10;
+    }
+    int num=result+1;
+      
+
+    
+    vector<int> convertToDigits(num); {
+    vector<int> Ndigits;
+    while (num > 0) {
+        int digit = num % 10;
+        Ndigits.insert(Ndigits.begin(), digit);
+        num /= 10;
+    }
+    return Ndigits;
+}
+    /*
+    vector<int> results(n + 1, 0);
+    results[0] = 1;
+    return results;
+    }*/
+        
+    
+         return digits;
+    }
+};
