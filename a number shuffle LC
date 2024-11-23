@@ -1,0 +1,30 @@
+class Solution {
+public:
+    bool isSameAfterReversals(int num) {
+   
+   if (num < 0) return false; // Negative or zero cannot be reversed meaningfully.
+   else if(num==0) return true;
+    int original = num;
+    int rev = 0;
+
+    // Reverse the number
+    while (num > 0) {
+        int digit = num % 10;
+        rev = rev * 10 + digit;
+        num /= 10;
+    }
+
+    // Reverse again
+    int rev1 = 0;
+    int temp = rev;
+    while (temp > 0) {
+        int digit = temp % 10;
+        rev1 = rev1 * 10 + digit;
+        temp /= 10;
+    }
+    
+    // Compare the double-reversed value to the original
+    return rev1 == original ;
+
+    }
+};
