@@ -1,0 +1,13 @@
+class Solution {
+public:
+    vector<int> shuffle(vector<int>& nums, int n) {
+         vector<int> result(2 * n); // Create a result array with 2n size
+        
+        for (int i = 0; i < n; i++) {
+            result[2 * i] = nums[i];       // Add xi to the even index
+            result[2 * i + 1] = nums[i + n]; // Add yi to the odd index
+        }
+        
+        return result;
+    }
+};
