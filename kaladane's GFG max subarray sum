@@ -1,0 +1,16 @@
+    int maxSubarraySum(vector<int> &arr) {
+        // code here...
+        int currSum = 0;
+    int maxSum = INT_MIN; // Initialize to the smallest integer
+    
+    for (int num : arr) {
+        currSum += num; // Add current number to the running sum
+        maxSum = max(maxSum, currSum); // Update the global maximum
+        
+        if (currSum < 0) {
+            currSum = 0; // Reset if the running sum is negative
+        }
+    }
+    
+    return maxSum;
+    }
