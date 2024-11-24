@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int maxAscendingSum(vector<int>& nums) {
+        int maxSum = 0;           // Variable to store the maximum sum
+        int currentSum = nums[0]; // Start with the first element
+
+        for (int i = 1; i < nums.size(); i++) {
+            if (nums[i] > nums[i - 1]) {
+                // If ascending, add the current element to the current sum
+                currentSum += nums[i];
+            } else {
+                // Otherwise, update maxSum and reset currentSum
+                maxSum = max(maxSum, currentSum);
+                currentSum = nums[i];
+            }
+        }
+
+        // Update maxSum after the loop to include the last subarray
+        maxSum = max(maxSum, currentSum);
+
+        return maxSum;
+    }
+};
