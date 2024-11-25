@@ -1,0 +1,25 @@
+class Solution {
+public:
+    string addBinary(string a, string b) {
+    string result = "";
+    int carry = 0;
+
+    int i = a.size() - 1; // Pointer for string a
+    int j = b.size() - 1; // Pointer for string b
+
+    while (i >= 0 || j >= 0 || carry) {
+        int sum = carry;
+
+        if (i >= 0) sum += a[i--] - '0'; // Convert char to int and add
+        if (j >= 0) sum += b[j--] - '0'; // Convert char to int and add
+
+        carry = sum / 2; // Calculate carry
+        result += (sum % 2) + '0'; // Append current bit
+    }
+
+    reverse(result.begin(), result.end()); // Reverse result
+    return result;
+       
+    }
+
+};
