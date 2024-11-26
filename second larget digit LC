@@ -1,0 +1,34 @@
+class Solution {
+public:
+
+    int secondHighest(string s) {
+
+     vector<int> digits;
+
+        // Extract digits from the string
+        for (char c : s) {
+            if (isdigit(c)) {
+                digits.push_back(c - '0'); // Convert char to int
+            }
+        }
+
+        // If no digits are found, return -1
+        if (digits.empty()) {
+            return -1;
+        }
+
+        // Remove duplicates by using a set
+        set<int> uniqueDigits(digits.begin(), digits.end());
+
+        // Convert the set back to a sorted vector
+        vector<int> sortedDigits(uniqueDigits.begin(), uniqueDigits.end());
+
+        // If fewer than 2 unique digits remain, return -1
+        if (sortedDigits.size() < 2) {
+            return -1;
+        }
+
+        // Return the second largest
+        return sortedDigits[sortedDigits.size() - 2];
+    }
+};
