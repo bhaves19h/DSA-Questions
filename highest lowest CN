@@ -1,0 +1,38 @@
+vector<int> getFrequencies(vector<int>& v) {
+    // Write Your Code Here
+     sort(v.begin(), v.end());
+
+    int maxFreq = 0, minFreq = INT_MAX;
+    int maxElem = INT_MAX, minElem = INT_MAX;
+
+    int currentFreq = 0;
+    int currentElem = v[0];
+
+    for (int i = 0; i <= v.size(); ++i) {
+        if (i < v.size() && v[i] == currentElem) {
+            // Increment frequency for the current element
+            currentFreq++;
+        } else {
+            // Process the completed group
+            if (currentFreq > maxFreq || (currentFreq == maxFreq && currentElem < maxElem)) {
+                maxFreq = currentFreq;
+                maxElem = currentElem;
+            }
+
+            if (currentFreq < minFreq || (currentFreq == minFreq && currentElem < minElem)) {
+                minFreq = currentFreq;
+                minElem = currentElem;
+            }
+
+            // Move to the next element
+            if (i < v.size()) {
+                currentElem = v[i];
+                currentFreq = 1;
+            }
+        }
+    }
+
+    return {maxElem, minElem};
+
+
+}
