@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int maxSubarraySumCircular(vector<int>&arr) {
+    int totalSum = 0; // Sum of all elements in the array
+    int currMax = 0, maxSum = INT_MIN; // For standard maximum subarray sum
+    int currMin = 0, minSum = INT_MAX; // For minimum subarray sum (to calculate circular max)
+
+    for (int num : arr) {
+        // Accumulate the total sum of the array
+        totalSum += num;
+
+        // Kadane's algorithm for the maximum subarray sum
+        currMax = max(num, currMax + num);
+        maxSum = max(maxSum, currMax);
+
+        // Kadane's algorithm for the minimum subarray sum
+        currMin = min(num, currMin + num);
+        minSum = min(minSum, currMin);
+    }
+
+    // Special case: all elements are negative
+    if (maxSum < 0) {
+        return maxSum; // Circular wrapping won't improve the result
+    }
+
+    // Return the maximum of non-circular and circular subarray sums
+    return max(maxSum, totalSum - minSum);
+
+    }
+};
