@@ -1,0 +1,23 @@
+vector<char> vec; // Acts as a stack
+        
+        for (char c : s) {
+            // Push open brackets onto the vector
+            if (c == '(' || c == '{' || c == '[') {
+                vec.push_back(c);
+            } else {
+                // Check for a matching open bracket
+                if (vec.empty()) return false; // No matching open bracket
+                char top = vec.back(); // Get the last element
+                vec.pop_back(); // Remove the last element
+                if ((c == ')' && top != '(') ||
+                    (c == '}' && top != '{') ||
+                    (c == ']' && top != '[')) {
+                    return false;
+                }
+            }
+        }
+        
+        // The vector should be empty if the string is valid
+        return vec.empty();
+    }
+};
