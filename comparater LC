@@ -1,0 +1,19 @@
+class Solution {
+public:
+    string largestNumber(vector<int>& nums) {
+    vector<string> strNums;
+        for (int num : nums) strNums.push_back(to_string(num));
+
+        // Sort strings using custom comparator
+        sort(strNums.begin(), strNums.end(), [](const string& a, const string& b) {
+            return a + b > b + a;
+        });
+
+        // Concatenate sorted strings
+        string result;
+        for (const string& s : strNums) result += s;
+
+        // Handle edge case where all numbers are zero
+        return result[0] == '0' ? "0" : result;
+    }
+};
