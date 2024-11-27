@@ -1,0 +1,76 @@
+--------------------------------------------------------------------------by while loop -------------------------------------------
+  class Solution {public:
+
+    int findKthPositive(std::vector<int>& arr, int k) {
+
+        // Sort the array first
+
+        std::sort(arr.begin(), arr.end());
+
+
+
+        int current = 1;  // Start checking from 1
+
+        int i = 0;  // Pointer for the array
+
+        int count = 0;  // Counter for missing numbers
+
+
+
+        // We keep searching until we find the kth missing number
+
+        while (count < k) {
+
+            // If the current number is not in the array, it's missing
+
+            if (i < arr.size() && arr[i] == current) {
+
+                i++;  // Move to the next element in the array
+
+            } else {
+
+                count++;  // Increase the count for missing numbers
+
+                if (count == k) {
+
+                    return current;  // Return the kth missing number
+
+                }
+
+            }
+
+            current++;  // Move to the next number in the range
+
+        }
+
+
+
+        return -1;  // This should not be reached unless k is invalid
+
+    }
+
+}; 
+-----------*-*-**********************************************------------------------------------------------------------------------------------------------
+  class Solution {
+public:
+    int findKthPositive(vector<int>& arr, int k) {
+        // Sort the array first
+        sort(arr.begin(), arr.end());
+
+        int i = 0;     // Pointer for the array
+        int count = 0; // Counter for missing numbers
+
+        for (int current = 1; count < k; current++) {
+            if (i < arr.size() && arr[i] == current) {
+                i++;       //present element
+            } else {
+                count++;   //missing element
+                if (count == k) {
+                    return current;
+                }
+            }
+        }
+
+        return -1; // This should not be reached unless k is invalid
+    }
+};
