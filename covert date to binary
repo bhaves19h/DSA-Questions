@@ -1,0 +1,25 @@
+class Solution {
+public:
+    string convertDateToBinary(string date) {
+    stringstream ss(date);
+    string year, month, day;
+    getline(ss, year, '-');
+    getline(ss, month, '-');
+    getline(ss, day);
+     int years = stoi(year);
+     int months = stoi(month);
+     int days = stoi(day);
+
+        // Convert to binary with bitset, specifying appropriate bit sizes
+        string yearBinary = bitset<16>(years).to_string();  // 16 bits for year
+        string monthBinary = bitset<4>(months).to_string(); // 4 bits for month (1-12)
+        string dayBinary = bitset<5>(days).to_string();     // 5 bits for day (1-31)
+        
+    yearBinary.erase(0, yearBinary.find_first_not_of('0'));
+    monthBinary.erase(0, monthBinary.find_first_not_of('0'));
+    dayBinary.erase(0, dayBinary.find_first_not_of('0'));
+        
+        // Return the concatenated binary date
+        return yearBinary + "-" + monthBinary + "-" + dayBinary;
+    }
+};
