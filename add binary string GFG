@@ -1,0 +1,35 @@
+class Solution {
+public:
+    string addBinary(string s1, string s2) {
+        string result = "";
+        int carry = 0;
+
+        // Pointers to the end of each string
+        int i = s1.size() - 1;
+        int j = s2.size() - 1;
+
+        // Add digits from right to left
+        while (i >= 0 || j >= 0 || carry > 0) {
+            int bit1 = (i >= 0) ? s1[i] - '0' : 0; // Convert character to integer
+            int bit2 = (j >= 0) ? s2[j] - '0' : 0; // Convert character to integer
+
+            int sum = bit1 + bit2 + carry;
+            result += (sum % 2) + '0'; // Append the binary digit to the result
+            carry = sum / 2;           // Compute carry
+
+            i--;
+            j--;
+        }
+
+        // Reverse the result string since we built it backwards
+        reverse(result.begin(), result.end());
+
+        
+        //result.erase(0, result.find_first_not_of('0'));
+  int k = 0;
+        while (k < result.size() && result[k] == '0') {
+            k++;
+        }
+        return (k == result.size()) ? "0" : result.substr(k);
+    }
+};
