@@ -1,0 +1,13 @@
+class Solution {
+public:
+vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) {
+     vector<bool> result; // Correct type for result
+    int maxCandies = *max_element(candies.begin(), candies.end()); // Find the max in the original array
+
+    for (int candy : candies){
+        // Check if the current child's candies + extraCandies >= maxCandies
+        result.push_back(candy + extraCandies >= maxCandies);
+    }
+    return result; // Return the resulting vector<bool>
+}
+};
