@@ -1,0 +1,25 @@
+class Solution {
+public:
+   
+int gcd(int a, int b) {
+    // Function to find the greatest common divisor (GCD) of two numbers
+    while (b != 0) {
+        a %= b;
+        swap(a, b);
+    }
+    return a;
+}
+
+string gcdOfStrings(string str1, string str2) {
+    // Step 1: Check if str1 + str2 == str2 + str1
+    if (str1 + str2 != str2 + str1) {
+        return ""; // If they don't satisfy this condition, there is no common divisor
+    }
+
+    // Step 2: Find the GCD of the lengths of the two strings
+    int lenGCD = gcd(str1.size(), str2.size());
+
+    // Step 3: The GCD string will be the prefix of length equal to lenGCD
+    return str1.substr(0, lenGCD);
+}
+};
