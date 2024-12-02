@@ -1,0 +1,27 @@
+class Solution {
+public:
+    bool find132pattern(vector<int>& nums) {
+        int n = nums.size();
+    if (n < 3) return false;
+
+    stack<int> st; // Stack to track potential `nums[k]` values
+    int third = INT_MIN; // The `nums[k]` value for the 132 pattern
+
+    // Traverse from right to left
+    for (int i = n - 1; i >= 0; i--) {
+        // If a valid `nums[i]` is found that satisfies the 132 condition
+        if (nums[i] < third) return true;
+
+        // Pop elements from the stack that are smaller than `nums[i]`
+        while (!st.empty() && nums[i] > st.top()) {
+            third = st.top(); // Update `nums[k]` value
+            st.pop();
+        }
+
+        // Push the current element as a potential `nums[j]`
+        st.push(nums[i]);
+    }
+
+    return false;
+}
+};
