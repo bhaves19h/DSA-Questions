@@ -1,0 +1,25 @@
+class Solution {
+ public:
+  int minMovesToMakePalindrome(string s) {
+    int ans = 0;
+
+        while (s.length() > 1) {
+            // Find the first occurrence of the last character
+            int i = s.find(s.back());
+            
+            if (i == s.length() - 1) {
+                // If it's already the middle letter
+                ans += i / 2;
+            } else {
+                // Remove the first matched character
+                s.erase(i, 1);
+                ans += i; // Add the swaps required to bring the matched character to the left
+            }
+
+            // Remove the last character
+            s.pop_back();
+        }
+
+        return ans;
+    }
+};
