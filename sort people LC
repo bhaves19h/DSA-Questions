@@ -1,0 +1,23 @@
+class Solution {
+public:
+   vector<string> sortPeople(vector<string>& names, vector<int>& heights) {
+     int n = heights.size();
+
+    // Pair heights with names
+    vector<pair<int, string>> people(n);
+    for (int i = 0; i < n; ++i) {
+        people[i] = {heights[i], names[i]};
+    }
+
+    // Sort pairs in descending order based on heights
+    sort(people.begin(), people.end(), greater<>());
+
+    // Extract sorted names
+    vector<string> sortedNames(n);
+    for (int i = 0; i < n; ++i) {
+        sortedNames[i] = people[i].second;
+    }
+
+    return sortedNames;
+}
+};
