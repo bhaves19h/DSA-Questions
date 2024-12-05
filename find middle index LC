@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int findMiddleIndex(vector<int>& nums) {
+        int totalSum = 0;  // Total sum of the array
+        int leftSum = 0;   // Tracks the sum of elements to the left of the current index
+
+        for (int num : nums) {
+            totalSum += num;
+        }
+
+        for (int i = 0; i < nums.size(); i++) {
+
+            if (leftSum == totalSum - leftSum - nums[i]) {
+                return i;  
+            }
+            leftSum += nums[i];
+        }
+
+        return -1;  // No middle index found
+    }
+};
