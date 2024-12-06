@@ -1,0 +1,32 @@
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& arr) {
+    
+       int n = arr.size();
+    if (arr.empty() || arr[0].empty()) // Handle empty matrix
+        return;
+
+    int m = arr[0].size(); // Correctly get the number of columns
+
+    vector<int> row(n, 0), col(m, 0);
+
+    // Traverse the matrix using 2 nested loops
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            // If the cell contains zero then mark its row and column
+            if (arr[i][j] == 0) {
+                row[i] = 1;
+                col[j] = 1;
+            }
+        }
+    }
+
+    // Update matrix cells based on row and column markers
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            if (row[i] || col[j])
+                arr[i][j] = 0;
+        }
+    }
+    }
+};
