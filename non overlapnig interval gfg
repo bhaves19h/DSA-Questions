@@ -1,0 +1,32 @@
+class Solution {
+  public:
+ 
+    int minRemoval(vector<vector<int>> &arr) {
+   
+    // If there are no intervals or just one, return their size as they don't overlap
+    if (arr.size() <= 1) {
+        return 0;
+    }
+    // Sort intervals based on their end time
+   sort(arr.begin(), arr.end(),[](const vector<int>& a, const vector<int>& b) {
+            return a[1] < b[1];
+    });
+
+    int count = 0;  // Count the first interval
+    int last_end = arr[0][1];  // Track the end time of the last selected interval
+
+    // Loop through the intervals
+    for (int i = 1; i < arr.size(); i++) {
+        // If the current interval starts after the last selected interval's end
+        if (arr[i][0] < last_end) {
+            count++;  // Include this interval as non-overlapping
+        }
+        else
+        {
+        last_end =arr[i][1];
+        }
+    }
+return count;  // Return the total count of non-overlapping intervals
+
+    }
+};
