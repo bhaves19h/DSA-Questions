@@ -1,0 +1,16 @@
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        // Step 1: Sort the array
+        sort(nums.begin(), nums.end());
+        
+        // Step 2: Check for adjacent duplicates
+        for (int i = 1; i < nums.size(); i++) {
+            if (nums[i] == nums[i - 1]) {
+                return true; // Found a duplicate
+            }
+        }
+        
+        return false; // No duplicates found
+    }
+};
