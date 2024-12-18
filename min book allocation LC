@@ -1,0 +1,39 @@
+  
+ bool check(vector<int>& arr, int k, int pagelimit) {
+        int cnt = 1; // Start with 1 student
+        int pagesum = 0;
+
+        for (int i = 0; i < arr.size(); i++) {
+            if (pagesum + arr[i] > pagelimit) { 
+                cnt++; // Assign the current book to the next student
+                pagesum = arr[i]; // Reset the page sum
+                if (cnt > k) return false; // More students than allowed
+            } else {
+                pagesum += arr[i]; // Add the book to the current student
+            }
+        }
+        return true; // All books assigned within page limits
+    }
+
+    int findPages(vector<int>& arr, int k) {
+        int n = arr.size();
+        if (k > n) return -1; // If more students than books
+
+        int min = *max_element(arr.begin(), arr.end()); // Minimum page limit
+        int max = accumulate(arr.begin(), arr.end(), 0); // Maximum page limit
+        int ans = -1;
+
+        // Binary search for the optimal page limit
+        while (min <= max) {
+            int mid = min + (max - min) / 2; // Midpoint of the range
+
+            if (check(arr, k, mid)) { // Can we assign books with this page limit?
+                ans = mid; // Update the answer
+                max = mid - 1; // Try for a smaller page limit
+            } else {
+                min = mid + 1; // Increase the page limit
+            }
+        }
+
+        return ans;
+    }
