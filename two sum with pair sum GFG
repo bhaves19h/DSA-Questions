@@ -1,0 +1,16 @@
+ public:
+    bool twoSum(vector<int>& arr, int target) {
+        // code here
+    unordered_map<int, int> seen; // Map to store the numbers we have seen so far
+    
+    for (int num : arr) {
+int complement = target - num; //Calculate the number needed to reach the target
+        if (seen.count(complement)) { // Check if the complement exists in the map
+            return true; // We found two numbers that add up to the target
+        }
+        seen[num] = 1; // Add the current number to the map
+    }
+    
+    return false;
+        
+    }
