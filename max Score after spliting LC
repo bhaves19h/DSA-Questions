@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int maxScore(string s) {
+        int n = s.size();
+        int totalOnes = 0;
+        for (char c : s) {
+            if (c == '1')
+                totalOnes++;
+        }
+
+        int leftZeros = 0, rightOnes = totalOnes, maxScore = 0;
+
+        // Traverse the string up to the second-to-last character to ensure two
+        // non-empty parts
+        for (int i = 0; i < n - 1; i++) {
+            if (s[i] == '0') {
+                leftZeros++;
+            } else {
+                rightOnes--;
+            }
+            maxScore = max(maxScore, leftZeros + rightOnes);
+        }
+
+        return maxScore;
+    }
+};
