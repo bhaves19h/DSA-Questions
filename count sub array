@@ -1,0 +1,15 @@
+    int countSubarrays(vector<int> &arr, int k) {
+        // code here
+        unordered_map<int,int> prefixsumcnt;
+        prefixsumcnt[0] =1;
+        int currSum = 0;
+        int cnt=0;
+        for(int num:arr){
+            currSum +=num;
+            if(prefixsumcnt.find(currSum-k)!= prefixsumcnt.end()){
+                cnt += prefixsumcnt[currSum-k];
+            }
+            prefixsumcnt[currSum]++;
+            
+        }
+        return cnt;
