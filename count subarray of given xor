@@ -1,0 +1,24 @@
+  public:
+    long subarrayXor(vector<int> &arr, int k) {
+        // code here
+        unordered_map<int,int>prefixcnt;
+        
+        int xorVal = 0;
+        int cnt =0;
+        
+        for(int num: arr){
+            
+            xorVal ^=num;
+            
+            if(xorVal==k){
+                cnt++;
+            }
+            
+            if(prefixcnt.find(xorVal^k) !=prefixcnt.end()){
+                cnt += prefixcnt[xorVal^k];
+            }
+            
+            prefixcnt[xorVal]++;
+        }
+        return cnt;
+    }
