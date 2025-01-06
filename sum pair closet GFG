@@ -1,0 +1,56 @@
+
+
+vector<int> sumClosest(vector<int>& arr, int target) {
+    if (arr.size() < 2) {
+        return {}; // Not enough elements to form a pair
+    }
+
+    // Sort the array
+    sort(arr.begin(), arr.end());
+
+    // Initialize two pointers
+    int left = 0, right = arr.size() - 1;
+
+    // Variables to track the closest sum
+    int closestSum = INT_MAX;
+    int minDiff = INT_MAX;
+    vector<int> result;
+
+    while (left < right) {
+        int sum = arr[left] + arr[right];
+        int diff = abs(target - sum);
+
+        // Update the closest pair if the current difference is smaller
+        if (diff < minDiff) {
+            minDiff = diff;
+            closestSum = sum;
+            result = {arr[left], arr[right]};
+        }
+
+        // Move pointers based on the current sum
+        if (sum < target) {
+            left++; // Increase sum
+        } else if (sum > target) {
+            right--; // Decrease sum
+        } else {
+            // If the exact target is found, return immediately
+            return {arr[left], arr[right]};
+        }
+    }
+
+    return result;
+}
+
+int main() {
+    vector<int> arr = {1, 3, 4, 7, 10};
+    int target = 15;
+    vector<int> result = sumClosest(arr, target);
+
+    if (!result.empty()) {
+        cout << "Closest pair: " << result[0] << ", " << result[1] << endl;
+    } else {
+        cout << "No pair found" << endl;
+    }
+
+    return 0;
+}
