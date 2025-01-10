@@ -1,0 +1,30 @@
+public:
+    vector<int> countDistinct(vector<int> &arr, int k) {
+        // code here.
+        int cnt =0 ;
+        vector<int>result;
+        unordered_map<int ,int > freq;
+        int start= 0 , distcnt=0 ;
+        
+        int n = arr.size();
+        for(int end=0 ; end<n ;end++){
+            freq[arr[end]]++;
+            
+            if(freq[arr[end]]==1){
+                distcnt++;
+            }
+            if(end-start+1 >k){
+                
+                freq[arr[start]]--;
+                
+                if(freq[arr[start]]==0){
+                    distcnt--;
+                }
+                start++;
+            }
+            if(end-start+1 ==k){
+                result.push_back(distcnt);
+            }
+        }   
+        return result;
+    }
