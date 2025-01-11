@@ -1,0 +1,23 @@
+   int longestUniqueSubstr(string &s) {
+        // code here
+        if(s.length()==0 ||s.length()==1){
+            return s.length();
+        }
+        int res=0;
+        vector<bool>vist(256,false);
+        
+        int left = 0 , right = 0 ;
+        
+        while(right<s.length()){
+            
+            while(vist[s[right]-'a']==true){
+                vist[s[left]-'a']=false;
+                left++;
+            }
+            vist[s[right]-'a']=true;
+            
+            res=max(res,(right-left+1));
+            right++;
+        }
+        return res;
+    }
