@@ -1,0 +1,32 @@
+   int maxWater(vector<int> &arr) {
+        // code here
+        int left = 0  ,  right = arr.size()-1;
+        int lmax=0 , rmax=0;
+        int water_trap = 0;
+        
+        while(left<=right){
+            
+            if(arr[left]<=arr[right]){
+                
+                if(arr[left]>=lmax){
+                    lmax = arr[left];
+                }
+                else{
+                    water_trap +=lmax-arr[left]; 
+                }
+                
+                left++;
+                
+            } 
+            else{
+        
+                if(arr[right]>=rmax){
+                    rmax = arr[right];
+                }
+                else{
+                    water_trap +=rmax-arr[right]; 
+                }
+                right--;
+        }
+            }
+     return water_trap;  
