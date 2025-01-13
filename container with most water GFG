@@ -1,0 +1,21 @@
+
+  public:
+    int maxWater(vector<int> &arr) {
+        // code here
+        int l = 0 ; 
+        int r = arr.size()-1;
+        int maxwater = 0 ;
+        while( l<r ){
+            
+            int currarea  = min( arr[l] , arr[r] ) * ( r - l);
+            maxwater = max(maxwater , currarea);
+            
+            
+            if(arr[l] < arr[r]){
+                l++;
+            }
+            else{
+                r--;
+            }
+        } 
+        return maxwater;
