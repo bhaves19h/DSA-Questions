@@ -1,0 +1,43 @@
+
+struct Node {
+    int data;
+    struct Node *next;
+    Node(int x) {
+        data = x;
+        next = NULL;
+    }
+};
+
+*/
+
+
+class Solution {
+  public:
+    Node* rotate(Node* head, int k) {
+        // Your code here
+        if(k==0 || head ==nullptr ||head->next ==nullptr){
+            return head;
+        }
+        Node* tail = head;
+        int len = 1;
+        while(tail->next){
+            tail = tail->next;
+            len++;
+        }
+        
+        k %= len;
+        if(k==0){
+            return head;
+        }
+        k=len-k;
+        Node* newtail = head;
+        for(int  i = 0 ; i < len-k-1 ; i++){
+            newtail = newtail->next ;
+            
+        }
+        Node* newHead = newtail->next;
+        newtail ->next = nullptr;
+        tail->next = head;
+        
+         
+        return newHead;
