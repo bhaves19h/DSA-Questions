@@ -1,0 +1,31 @@
+Node* sortedMerge(Node* head1, Node* head2) {
+    // Handle edge cases where one of the lists is empty
+    if (head1 == nullptr) return head2;
+    if (head2 == nullptr) return head1;
+
+    // Initialize a dummy node to simplify list merging
+    Node* dummy = new Node(0);
+    Node* current = dummy;
+
+    // Merge the lists
+    while (head1 != nullptr && head2 != nullptr) {
+        if (head1->data <= head2->data) { // Corrected: "head" to "head2"
+            current->next = head1;
+            head1 = head1->next;
+        } else {
+            current->next = head2;
+            head2 = head2->next;
+        }
+        current = current->next;
+    }
+
+    // Append any remaining elements
+    if (head1 != nullptr) { // Corrected: "head" to "head1"
+        current->next = head1;
+    } else {
+        current->next = head2;
+    }
+
+    // Return the merged list starting from the next node of dummy
+    return dummy->next;
+}
