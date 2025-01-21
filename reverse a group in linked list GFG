@@ -1,0 +1,80 @@
+    struct node
+    {
+        int data;
+        struct Node* next;
+
+        Node(int x){
+            data = x;
+            next = NULL;
+        }
+
+    }*head;
+*/
+
+class Solution {
+  public:
+    Node *reverseKGroup(Node *head, int k) {
+        // code here
+      /*  if(!head ||k<=1){
+            return head;
+        }
+        Node* dumy=  new Node(0);
+        dumy ->next = head;
+        
+        Node* curr = dumy ;
+        Node* prev  = dumy ;
+        Node* next  = dumy ;
+        int cnt =0;
+        
+        while(curr->next != nullptr){
+            curr  = curr->next;
+            cnt++;
+        }
+        
+        while(cnt>= k){
+            curr = prev->next;
+            next = curr->next;
+            
+            for(int i = 1 ; i<k ; i++){
+                curr->next=next->next;
+                next->next = prev->next;
+            
+                prev->next= next;
+                next = curr->next;
+            }
+            prev= curr;
+            cnt -= k;
+        } 
+        if(cnt>0){
+        curr = prev->next;
+        next = curr->next;
+         for(int i = 1 ; i<k ; i++){
+                curr->next=next->next;
+                next->next = prev->next;
+            
+                prev->next= next;
+                next = curr->next;
+            }
+        }
+            return dumy->next;
+       */ 
+       
+       Node* t = head;
+       Node* a = NULL;
+       Node* b = NULL;
+       int c =0 ;
+       while(t && c<k){
+           a = t->next;
+           t-> next =b;
+           b=t;
+           t=a;
+           c++;
+           
+       }
+       if(a!=NULL){
+           head->next = reverseKGroup(a,k);
+           
+       }
+       return b;
+    }
+    
