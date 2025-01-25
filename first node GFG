@@ -1,0 +1,27 @@
+class Solution {
+public:
+    Node* findFirstNode(Node* head) {
+        if (!head || !head->next) return nullptr; // No loop if the list is empty or has only one node.
+
+        Node* slow = head; // Initialize slow pointer.
+        Node* fast = head; // Initialize fast pointer.
+
+        // Detect the loop using Floyd's Cycle Detection Algorithm
+        while (fast && fast->next) {
+            slow = slow->next;         // Move slow pointer one step.
+            fast = fast->next->next;   // Move fast pointer two steps.
+
+            if (slow == fast) {        // Loop detected
+                // Find the first node of the loop
+                slow = head;          // Reset slow pointer to the head
+                while (slow != fast) { // Move both pointers one step at a time
+                    slow = slow->next;
+                    fast = fast->next;
+                }
+                return slow; // This is the first node of the loop.
+            }
+        }
+
+        return nullptr; // No loop found.
+    }
+};
