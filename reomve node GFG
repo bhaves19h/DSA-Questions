@@ -1,0 +1,41 @@
+class Solution {
+  public:
+  
+    // Function to remove a loop in the linked list.
+    void removeLoop(Node* head) {
+        if (!head || !head->next) return;
+
+        Node* slow = head;
+        Node* fast = head;
+
+        // Step 1: Detect the loop
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+
+            // If slow and fast meet, there is a loop
+            if (slow == fast) {
+                break;
+            }
+        }
+
+        // If no loop is detected, return
+        if (slow != fast) return;
+
+        // Step 2: Find the start of the loop
+        slow = head;
+        if (slow == fast) {
+            // Special case when the loop starts at the head
+            while (fast->next != slow) {
+                fast = fast->next;
+            }
+        } else {
+            while (slow->next != fast->next) {
+                slow = slow->next;
+                fast = fast->next;
+            }
+        }
+
+        // Step 3: Remove the loop
+        fast->next = NULL;
+}
