@@ -1,0 +1,40 @@
+#include <unordered_map>
+#include <list>
+
+class LRUCache {
+private:
+    int capacity;
+    std::list<std::pair<int, int>> cache; // Doubly linked list to store key-value pairs
+    std::unordered_map<int, std::list<std::pair<int, int>>::iterator> map; // Hash map for fast access
+
+public:
+    // Constructor
+    LRUCache(int cap) : capacity(cap) {}
+
+    // Get the value of the key if it exists, otherwise return -1
+    int get(int key) {
+        if (map.find(key) == map.end()) return -1; // Key not found
+        // Move the accessed key-value pair to the front of the list
+        cache.splice(cache.begin(), cache, map[key]);
+        return map[key]->second; // Return the value
+    }
+
+    // Put a key-value pair in the cache
+    void put(int key, int value) {
+        // If the key already exists, update its value and move it to the front
+        if (map.find(key) != map.end()) {
+            cache.splice(cache.begin(), cache, map[key]);
+            map[key]->second = value;
+            return;
+        }
+        // If the cache is full, remove the least recently used (LRU) item
+        if (cache.size() == capacity) {
+            int lruKey = cache.back().first; // Get the key of the LRU item
+            cache.pop_back();               // Remove it from the list
+            map.erase(lruKey);              // Remove it from the hash map
+        }
+        // Insert the new key-value pair at the front of the list
+        cache.emplace_front(key, value);
+        map[key] = cache.begin(); // Update the hash map
+    }
+};
