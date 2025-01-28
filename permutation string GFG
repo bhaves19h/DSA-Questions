@@ -1,0 +1,42 @@
+
+
+class Solution {
+private:
+    void backtrack(string &s, int start, vector<string> &result) {
+        if (start == s.size()) { // Base case: if all characters are fixed
+            result.push_back(s); // Add the current permutation to the result
+            return;
+        }
+
+        unordered_set<char> used; // To track used characters at this level
+        for (int i = start; i < s.size(); i++) {
+            if (used.count(s[i])) continue; // Skip duplicate characters
+            used.insert(s[i]); // Mark the character as used
+
+            swap(s[start], s[i]); // Swap the current character with the start
+            backtrack(s, start + 1, result); // Recurse for the next position
+            swap(s[start], s[i]); // Backtrack: undo the swap
+        }
+    }
+
+public:
+    vector<string> findPermutation(string &s) {
+        vector<string> result;
+        sort(s.begin(), s.end()); // Sort the string to handle duplicates easily
+        backtrack(s, 0, result); // Call the backtracking helper function
+        return result;
+    }
+};
+
+int main() {
+    Solution sol;
+    string s = "AAB";
+    vector<string> permutations = sol.findPermutation(s);
+
+    cout << "Unique Permutations of \"" << s << "\":" << endl;
+    for (const string &perm : permutations) {
+        cout << perm << endl;
+    }
+
+    return 0;
+}
