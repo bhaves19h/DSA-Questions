@@ -1,0 +1,22 @@
+class Solution {
+public:
+    double power(double b, int e) {
+        // Base case: anything raised to power 0 is 1
+        if (e == 0) 
+        {return 1.0;
+        }
+        // Handle negative exponent by taking reciprocal
+        if (e < 0){
+            return 1.0/ power(b, -e);
+        } 
+        
+        
+        double halfpower = power(b,e/2);
+        
+        if(e &1) {
+            return b*halfpower*halfpower;
+        }
+        else {
+            return halfpower*halfpower;
+        }
+    }
