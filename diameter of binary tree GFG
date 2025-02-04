@@ -1,0 +1,22 @@
+class Solution {
+  public:
+    int findDiameter(Node* root, int &maxDia) {
+        // Your code here
+        if (!root) return 0;
+        
+        int leftHeight = findDiameter(root->left, maxDia);
+        int rightHeight = findDiameter(root->right, maxDia);
+        
+        // Update max diameter if the current diameter is larger
+        maxDia = max(maxDia, leftHeight + rightHeight + 1);
+        
+        // Return the height of the current subtree
+        return max(leftHeight, rightHeight) + 1;
+    }
+    
+      int diameter(Node* root) {
+        int maxDia = 0;
+        findDiameter(root, maxDia);
+        return maxDia-1;
+    }
+    
