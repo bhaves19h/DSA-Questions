@@ -1,0 +1,29 @@
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+class Solution {
+public:
+    int tupleSameProduct(vector<int>& nums) {
+        int n = nums.size();
+        unordered_map<int, int> productCount; // To store the frequency of each product
+        int cnt = 0;
+
+        // Iterate through all pairs (i, j) where i < j
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                int product = nums[i] * nums[j]; // Calculate the product
+                // If this product has been seen before, increment the count
+                if (productCount.find(product) != productCount.end()) {
+                    cnt += productCount[product]; // Add the frequency to the count
+                    productCount[product]++; // Increment the frequency
+                } else {
+                    productCount[product] = 1; // Initialize the frequency
+                }
+            }
+        }
+
+        // Each tuple (i, j, k, l) can be arranged in 8 ways
+        return cnt * 8;
+    }
+}; dry run
