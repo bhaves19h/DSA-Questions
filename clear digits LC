@@ -1,0 +1,27 @@
+string clearDigits(string s) {
+    stack<char> st;
+    unordered_map<int, char> removedChars;
+
+    for (char c : s) {
+        if (isdigit(c)) {
+            // Remove the closest non-digit character (if available)
+            if (!st.empty()) {
+                removedChars[st.size() - 1] = st.top(); // Mark removed character
+                st.pop();
+            }
+        } else {
+            st.push(c); // Push non-digit characters to the stack
+        }
+    }
+
+    // Construct the final result
+    string result;
+    while (!st.empty()) {
+        result += st.top();
+        st.pop();
+    }
+    reverse(result.begin(), result.end()); // Restore correct order
+
+    return result;
+}
+};
