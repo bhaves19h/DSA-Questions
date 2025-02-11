@@ -1,0 +1,20 @@
+
+public:
+    bool isBSTUtil(Node* root, int minVal, int maxVal) {
+        // Base case: If root is NULL, it's a valid BST
+        if (root == NULL) return true;
+
+        // Check if the current node violates the BST property
+        if (root->data <= minVal || root->data >= maxVal) return false;
+
+        // Recursively check left and right subtrees with updated constraints
+        return isBSTUtil(root->left, minVal, root->data) && 
+               isBSTUtil(root->right, root->data, maxVal);
+    }
+
+    bool isBST(Node* root) {
+        return isBSTUtil(root, INT_MIN, INT_MAX);
+    }
+
+
+};
