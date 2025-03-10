@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+void userArr(int *arr , int n ){
+ for(int i = 0 ; i<n ; i++){
+        cin>>arr[i];
+    }
+}
+int main() {
+  //  int arr[] = {10 , 5 , 4 ,3};
+    int n;
+    cout<<"enter size: ";
+    cin>>n;
+    int arr[n];
+    cout<<"enter array: ";
+    userArr(arr ,n);
+ //   int n = sizeof(arr)/sizeof(arr[0]);
+    int *start = arr;
+    int *end = arr+n-1;
+    while(start<end){
+        int temp = *start;
+        *start = *end;
+        *end = temp;
+        start++;
+        end--;
+    }
+    cout<<"reverse array:";
+    for(int i = 0 ; i<n ; i++){
+        cout<<arr[i]<<" ";        
+    }
+    return 0;
+}
