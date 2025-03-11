@@ -1,0 +1,43 @@
+import java.util.Scanner;
+class Main {
+    public static void printArr(int arr[] , int n ){
+        System.out.print("the array is:");
+        for(int i = 0 ; i<n ; i++){
+            System.out.print(" "+arr[i]);
+        }
+        System.out.println();
+    }
+    public static void inpArr(int arr[] , int n ){
+       Scanner sc = new Scanner(System.in);
+       System.out.print("enter array :");
+        for(int j = 0 ; j<n ; j++){
+          arr[j]  = sc.nextInt();
+        }
+    }
+    public static void revArr(int arr[],int arr1[] , int n ){
+       int x ;
+        for(int j = 0 ; j<n ; j++){
+            x = n-j-1;
+            arr1[j] = arr[x];
+           /* int temp = arr[j];
+            arr[j] = arr[n-j-1];
+            arr[n-j-1] = temp;*/
+        }
+        
+        System.out.print("the reverse array is:");
+        for(int i = 0 ; i<n ; i++){
+            System.out.print(" "+arr1[i]);
+        }
+    }
+    public static void main(String[] args) {
+     Scanner sc = new Scanner(System.in);
+     System.out.print("enter number of array :");
+     int n = sc.nextInt() ;
+     int arr[] = new int[n];
+     int arr1[] = new int[n];//ek extra array lena pda
+     inpArr(arr ,n);
+     printArr(arr, n);
+     revArr(arr,arr1,n);
+        sc.close();
+    }
+}
