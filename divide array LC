@@ -1,0 +1,17 @@
+#include <stdbool.h>
+
+bool divideArray(int* nums, int numsSize) {
+    if (numsSize % 2 != 0) return false;  // If odd, pairing is impossible.
+
+    int freq[501] = {0};  // Assuming 1 ≤ nums[i] ≤ 500
+
+    for (int i = 0; i < numsSize; i++) {
+        freq[nums[i]]++;  // Count occurrences
+    }
+
+    for (int i = 0; i < 501; i++) {
+        if (freq[i] % 2 != 0) return false;  // If any number has an odd count, return false.
+    }
+
+    return true;
+}
