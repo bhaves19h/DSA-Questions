@@ -1,0 +1,26 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <vector>
+#include <bits/stdc++.h>
+using namespace std;
+
+int f(int ind , vector<int> &height){
+     if (ind == 0) return 0;
+    int left = f(ind -2, height )+abs(height[ind]-height[ind-1]);
+    int right = INT_MAX;
+    if(ind>1){
+        right = f(ind -2, height )+abs(height[ind]-height[ind-2]);
+        
+    }
+    return min(left,right);
+}
+int fjump(int n , vector<int> &height){
+    return f(n-1 , height);
+}    
+int main() {
+   vector<int> height = {3, 2, 1};  // Correct way to initialize a vector.
+    int n = height.size();
+    
+    cout << "Min jump is: " << fjump(n, height) << endl;
+    return 0;
+}
