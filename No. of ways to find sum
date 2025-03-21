@@ -1,0 +1,28 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+
+int f(int ind, int k , int arr[]) {
+    
+    if (k == 0) return 1;  // Found a valid subset
+    if (ind < 0 || k < 0) return 0;  // No solution
+
+    int notTake = f(ind - 1, k ,arr);  // Do not take arr[ind]
+    int take = 0;
+    if (arr[ind] <= k) take = f(ind - 1, k - arr[ind],arr);  // Take arr[ind]
+
+    return notTake + take;
+}
+
+int main() {
+    // Write C++ code here
+    
+int target;
+int arr[] = {2, 3, 7, 8, 10};
+target  = 11;
+ int n = sizeof(arr) / sizeof(arr[0]); 
+cout << f(n-1, target,arr) << endl;
+
+
+    return 0;
+}
