@@ -1,0 +1,26 @@
+class Solution {
+  public:
+    // Function to check if we can split the arr into segments satisfying the condition
+bool isEqualXor(vector<int> &arr) {
+    int k = 0, n = arr.size();
+    
+    // Compute overall XOR of the array
+    for (int num : arr) k ^= num;
+
+    // If overall XOR is 0, check if we can find a prefix with XOR 0
+    if (k==0) return true;
+   
+
+    // If overall XOR is nonzero, check if we can partition into 3 segments
+    int prefixXor = 0, count = 0;
+    for (int num : arr) {
+        prefixXor ^= num;
+        if (prefixXor == k) {
+            count++;
+            prefixXor = 0;  // Reset for the next partition
+        }
+    }
+
+    return count >1;  // We need at least 1 such partitions
+}
+};
