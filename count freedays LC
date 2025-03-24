@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int countDays(int days, vector<vector<int>>& meetings) {
+        vector<bool> occupied(days + 1, false);  // Marking days
+
+        // Mark all days covered by meetings
+        for (auto& m : meetings) {
+            for (int d = m[0]; d <= m[1]; d++) {
+                occupied[d] = true;
+            }
+        }
+       
+        // Count days not occupied
+        int freeDays = 0;
+        for (int d = 1; d <= days; d++) {
+            if (!occupied[d]) freeDays++;
+        }
+
+        return freeDays;
+    }
+};
