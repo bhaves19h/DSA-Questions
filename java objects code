@@ -1,0 +1,24 @@
+class abc{
+boolean isON;
+
+void Onlamp(){
+isON = true;
+System.out.println("light is ON " +isON);
+}
+
+void Offlamp(){
+isON =false;
+System.out.println("light is OFF " +isON);
+}
+}
+
+class Main{
+public static void main(String[] args){
+abc l1 = new abc();
+abc l2 = new abc();
+
+l1.Onlamp();
+l2.Offlamp();
+}
+
+}
