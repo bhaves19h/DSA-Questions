@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int minimumRecolors(string blocks, int k) {
+        int minRecolors = k;  // Maximum recolors needed (worst case: all 'W')
+        int whiteCount = 0;
+
+        // Count 'W' in the first window of size k
+        for (int i = 0; i < k; i++) {
+            if (blocks[i] == 'W') whiteCount++;
+        }
+        minRecolors = whiteCount; // Initialize with first window count
+
+        // Slide the window across the string
+        for (int i = k; i < blocks.size(); i++) {
+            // Remove leftmost character from window
+            if (blocks[i - k] == 'W') whiteCount--;
+            // Add new character to window
+            if (blocks[i] == 'W') whiteCount++;
+
+            // Update minimum recolors needed
+            minRecolors = min(minRecolors, whiteCount);
+        }
+
+        return minRecolors;
+    }
+};
