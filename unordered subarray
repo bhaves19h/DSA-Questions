@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int countCompleteSubarrays(vector<int>& nums) {
+        unordered_set<int> fullSet(nums.begin(), nums.end()); //sorting with set
+        int totalDistinct = fullSet.size();
+        int n = nums.size();
+        int count = 0;
+
+        for (int i = 0; i < n; i++) {
+            unordered_set<int> subarraySet; //define a set
+            for (int j = i; j < n; j++) {
+                subarraySet.insert(nums[j]);   //.insert instert the element
+                if (subarraySet.size() == totalDistinct) {   //total dist = 3 then incr until size not equal to 3
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
+};
