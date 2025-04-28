@@ -1,0 +1,21 @@
+
+class Solution {
+public:
+    long long countSubarrays(vector<int>& nums, long long k) {
+        int n = nums.size();
+        long long ans = 0;
+        long long sum = 0;
+        int left = 0;
+        
+        for (int right = 0; right < n; right++) {
+            sum += nums[right];  //right me subarray ki value  add krte jao [1,2,3,4,5] + usko sum 
+
+            while (sum * (right - left + 1) >= k) {    // len = right-left +1  , usko len*sum check kro less than k h ya nhi 
+                sum -= nums[left];    //Not valid → shrink from left side  
+                left++;
+            }
+            ans += (right - left + 1);  //right by for loop left by while loop value ko put kro or ans me add kro
+        }
+        return ans;
+    }
+};
