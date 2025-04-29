@@ -1,0 +1,61 @@
+/*
+class Solution {
+public:
+    long long countSubarrays(vector<int>& nums, int k) {
+        int n = nums.size();
+        int maxVal = *max_element(nums.begin(), nums.end());
+        long long ans = 0;
+
+/*
+int max = arr[0]; // maan lo pehla element hi max hai
+for(int i = 1; i < n; i++) {
+    if(arr[i] > max) {
+        max = arr[i];  // agar koi bada mila to max update
+    }
+}*/
+/*
+        for (int i = 0; i < n; i++) {
+            int count = 0;
+            for (int j = i; j < n; j++) {
+                if (nums[j] == maxVal) {
+                    count++;
+                    }
+                if (count >= k){
+                     ans++;
+                }
+            }
+        }
+        return ans;
+    }
+};
+*/
+
+class Solution {
+public:
+    long long countSubarrays(vector<int>& nums, int k) {
+        int n = nums.size();
+        int maxVal = *max_element(nums.begin(), nums.end());
+        int left = 0, count = 0;
+        long long ans = 0;
+
+        for (int right = 0; right < n; ++right) {
+            if (nums[right] == maxVal) {
+                count++;
+            }
+            while (count >= k) { // agr count ki value k se jyda h tho hum check
+                                 // krenge ki hume aage jana he ya nhi
+                // All subarrays from left to right are valid
+                ans += n - right; // right zero h so 5-0 , 5-1 ,5-4 subaray ka
+                                  // size bade se chota ho rha h
+                if (nums[left] == maxVal) {
+                    count--; //"Is window me jitne bhi subarrays honge, sab
+                             //valid hain
+                } // count kam isliye kyunki hum next max sub array pr jana
+                  // chate h tho window ki size km krk check kr rhe h
+                left++;
+            }
+        }
+
+        return ans;
+    }
+};
