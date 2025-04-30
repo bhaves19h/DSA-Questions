@@ -1,0 +1,34 @@
+import java.util.*;
+
+class sum{
+
+    public int printSum(int a, int b){
+    
+    int c  = a+b;
+    System.out.println("sum is "+c);
+    return c;
+}
+}
+
+class avg extends sum{
+  public void printAvg(int x , int y ){
+  int k = printSum(x,y);
+  System.out.println("avg is " +(k/2));
+
+}
+}
+
+
+public class inherit{
+      public static void main(String[] args){
+      sum s = new sum();
+      avg a = new avg();
+      s.printSum(5,2);
+      a.printAvg(5,1);
+
+
+}
+
+
+
+}
