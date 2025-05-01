@@ -1,0 +1,15 @@
+
+echo "enter value "
+read n 
+n1=0
+n2=1
+temp=0 
+echo "fibonacci series $n :"
+
+while [ $temp -le $n ]
+do
+echo "$temp"
+n1=$n2
+n2=$temp
+temp=`expr $n1 + $n2`
+done
