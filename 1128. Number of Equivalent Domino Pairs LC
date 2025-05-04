@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int numEquivDominoPairs(vector<vector<int>>& dominoes) {
+    unordered_map<int , int>freq;
+    int cnt = 0 ;
+    for (auto& d : dominoes) {
+            int key = min(d[0], d[1]) * 10 + max(d[0], d[1]); // normalize
+            cnt += freq[key];//key ki frequncy ko freq array me insert krna.
+
+// add existing pairs   freq array me key ko insert krna h jisse cnt ki value tho 0 h but next time same value ayegi tho cnt ki value 1 ho jaayegi freq[key] uss particular key ki value kitni baar ayi h wo bta rha h jaise freq[12] starting me 0 tha usko insert kr dia or cnt increase kr dia  fir wapas jb freq[12] aya tho value 0 se 1 bdh gyi. 
+
+            freq[key]++;
+//jb ek bar koi key aa gyi or dusri baar whi key aa rhi h tho value increase  kr denge
+        }
+    return cnt;
+    }
+};
