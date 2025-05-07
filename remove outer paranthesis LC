@@ -1,0 +1,23 @@
+class Solution {
+public:
+    string removeOuterParentheses(string s) {
+        string result;
+        int open = 0; // balance counter
+
+        for (char c : s) {
+            if (c =='(') { // outr opening h isko resilt nhi dalna h open++ krna h ,
+                       // first wala open '(' skip beacuase open == 0
+                if (open > 0) {
+                    result += c;
+                } // result me store krenge particulr bracket ko
+                open++; // second ( tab isko dalna h or ++  krna
+            } else {
+                open--;
+                if (open > 0) {
+                    result += c;
+                }
+            }
+        }
+        return result;
+    }
+};
