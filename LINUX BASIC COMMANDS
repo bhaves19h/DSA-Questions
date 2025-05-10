@@ -1,0 +1,72 @@
+
+name="bhavesh"
+
+echo "a :"
+read n;
+echo "enter b"
+read b;
+
+#sum=$((n+b))
+
+sum=$(expr $n + $b)
+echo "sum is" $sum;
+
+
+if [ $n -gt 1 -a  $n -le 100 ]; then 
+echo "it is greater"
+else 
+echo "not greater"
+fi
+
+
+echo "week"
+read w;
+case $w in
+1)echo "monday" ;;
+2)echo "tuesday" ;;
+*)echo "only seven days" ;;
+
+esac
+
+
+i=1;
+while [ $i -le 10 ]
+do 
+m=$(( $i*n ));
+echo $m
+i=$(( $i+1 ))
+done
+
+mul=`expr $n \* $b`
+#mul=$(( $n \* $b))
+echo "mult is" $mul;
+
+
+echo "enter n:"
+read num;
+
+prev1=0 
+prev2=1
+curr=1 
+echo "fibbonaci series is: "
+echo $prev1
+echo $prev2
+
+for((i = 1 ; i<num ;i++));
+do
+curr=`expr $prev1 + $prev2 `
+
+prev1=$prev2
+prev2=$curr
+
+echo $curr;
+done
+
+
+
+
+echo "Hello" $name;
+
+#open text editor or vi file_name.sh
+#sh file_name.sh
+#bash file_name.sh
