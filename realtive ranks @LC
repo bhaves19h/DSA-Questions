@@ -1,0 +1,30 @@
+class Solution {
+public:
+    vector<string> findRelativeRanks(vector<int>& score) {
+    int n = score.size();
+    vector<int> sortedScore = score;  // Copy original scores
+    sort(sortedScore.rbegin(), sortedScore.rend()); // Sort in descending order
+
+    // Map each score to its rank
+    unordered_map<int, int> rank;
+    for (int i = 0; i < n; ++i) {
+        rank[sortedScore[i]] = i + 1;
+    }
+
+    // Create the result vector
+    vector<string> result(n);
+    for (int i = 0; i < n; ++i) {
+        int position = rank[score[i]];
+        if (position == 1)
+            result[i] = "Gold Medal";
+        else if (position == 2)
+            result[i] = "Silver Medal";
+        else if (position == 3)
+            result[i] = "Bronze Medal";
+        else
+            result[i] = to_string(position);
+    }
+    return result;
+
+    }
+};
