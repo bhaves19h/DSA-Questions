@@ -1,0 +1,30 @@
+class Solution {
+public:
+
+    int minMaxDifference(int num) {
+        string s = to_string(num);
+        int maxi = num, mini = num;
+
+        for (char d = '0'; d <= '9'; ++d) {
+            for (char r = '0'; r <= '9'; ++r) {
+                if (d == r) continue;  // Skip same-digit remap
+                string remapped = s;
+                bool found = false;
+
+                for (char &c : remapped) {
+                    if (c == d) {
+                        c = r;
+                        found = true;
+                    }
+                }
+
+                if (found) {
+                    int val = stoi(remapped);
+                    maxi = max(maxi, val);
+                    mini = min(mini, val);
+                }
+            }
+        }
+        return maxi - mini;
+    }
+};
