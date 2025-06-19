@@ -1,0 +1,34 @@
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+         if (s.length() != t.length())
+        return false;
+
+    unordered_map<char, char> map1, map2;
+
+    for (int i = 0; i < s.length(); i++) {
+        char c1 = s[i];
+        char c2 = t[i];
+
+        // If c1 is already mapped, check for consistency
+        if (map1.count(c1)) {
+            if (map1[c1] != c2) //check kro ki map1 me c1 mapped tho nhi c2 se by count method
+                return false;
+        }
+        
+        else {
+            map1[c1] = c2;
+        }
+
+        // If c2 is already mapped from another character, not allowed
+        if (map2.count(c2)) {
+            if (map2[c2] != c1)
+                return false;
+        } else {
+            map2[c2] = c1;
+        }
+    }
+
+    return true;
+    }
+};
