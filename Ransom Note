@@ -1,0 +1,25 @@
+
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+        int ransom[26] = {0};  // Count for ransomNote
+        int mag[26] = {0};     // Count for magazine
+        
+        // Count characters in ransomNote
+        for(char ch : ransomNote){
+            ransom[ch - 'a']++;
+        }
+
+        // Count characters in magazine
+        for(char ch : magazine){
+            mag[ch - 'a']++;
+        }
+
+        // Compare counts
+        for(int i = 0; i < 26; i++){
+            if(ransom[i] > mag[i]) return false;
+        }
+
+        return true;
+    }
+};
