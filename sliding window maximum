@@ -1,0 +1,30 @@
+class Solution {
+public:
+    vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+        deque<int> dq;
+        vector<int> res;
+
+        for (int i = 0; i < nums.size(); i++) {
+        
+//suppose we are at index 4 and the window size is 3 which contain only 3 element [1,2,3] in a dq so we have to pop the first front from the dq so the size of window remain equal to k [2,3,4]. 
+            if (!dq.empty() && dq.front() <= i - k) { // if dq front smaller then we pop from front
+                dq.pop_front();//when i-k increase means window size is now increasing so we have to maintan this into a range of k so there is no need of front index in dq so we will renove it
+            }
+
+            // remove elements smaller than cuurect from back
+            while (!dq.empty() && nums[dq.back()] < nums[i]) { // pop krte jao jb tk piche wala element max naa aa jaye dq.back>nums[i]
+                dq.pop_back(); // if dq back index is smaller than the current we will pop from back.
+            } //agr current value(nums[i]) choti ho jaye to usk index ko push kr denge dq me or agr bdi ho jaye to pop krte rhenge kyuki current value bdi he or deque ke front me ayegi front me humesha bdi value hi store krengne
+
+            dq.push_back(i);
+
+            // push into the res from the deque front index value into res
+            
+            //only collect the maximum value of a subarray and if less value like 0 and 1 then how it will decide k size is formed.  
+            if (i >= k-1 ) { //to know about the max element of the current window
+                res.push_back(nums[dq.front()]); // dq.front() always holds the index of the maximum element in the current window
+            }
+        }
+        return res;
+    }
+};
