@@ -1,0 +1,43 @@
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    Node* prev;
+    Node* next;
+    Node* child;
+};
+*/
+
+class Solution {
+public:
+    Node* flatten(Node* head) {
+        if(head == NULL){
+            return head;
+        }
+
+        Node* curr = head;
+        while(curr != NULL){ //current pointer ko head pe set karo
+            if(curr->child != NULL){
+            // Agar current node ke paas child hai toh:
+            Node* next = curr->next;// next node ko temporarily store karo
+
+            curr->next = flatten(curr->child);
+
+            curr->next = child;// curr->next->prev = curr;
+            child->prev= curr;  // 1->2->3->6->4  3 k next me child nodes he when recursivly flatten krenge to 3(curr) ka next 6, 6 ke prev me curr and that curr will be null and disconnect from the child node 
+            curr->child= NULL;
+            
+            while(curr->next != NULL){
+                curr = curr->next;// end tak jao flattened child list ka
+            }
+                if(next != NULL){
+                   curr->next = next; // child ke baad ka original next wapas jodo
+                   next->prev = curr;
+                }
+            }
+            curr = curr->next;
+        }
+        return head;
+    }
+};
