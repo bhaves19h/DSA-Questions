@@ -35,3 +35,9 @@ void heapify(int arr[], int n, int i) {
         heapify(arr, n, largest);     // Recursively heapify the affected subtree
     }
 }
+
+min-heap.top() - it will return the min element from the top. it will swap if incoming number is smaller else greater element will get nothing the will come down which satisfiy 
+the tree to be min heap as parent is smaller than the children 
+max-heap.top() - it will return th emax element from the top.
+
+now we pop out the element which are at the top and push into the array.
