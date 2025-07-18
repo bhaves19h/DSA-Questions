@@ -1,0 +1,37 @@
+🔍 What Does heapify() Do in Heaps?
+The heapify() function is a fundamental operation that transforms a binary tree (usually in array form) into a valid heap (min-heap or max-heap), by maintaining the heap property.
+
+🧠 Heap Property Recap:
+Max-Heap: Every parent node ≥ its children.
+
+Min-Heap: Every parent node ≤ its children.
+
+
+
+node = ith index;
+left  = 2*i;
+right = 2*i+1;
+parent = i/2;
+
+cbt leaf node (n/2)+1;
+
+heapify code
+void heapify(int arr[], int n, int i) {
+    int largest = i;          // Assume current node is largest
+    int left = 2 * i + 1;     // Left child index
+    int right = 2 * i + 2;    // Right child index
+
+    // If left child is larger than root
+    if (left < n && arr[left] > arr[largest])
+        largest = left;
+
+    // If right child is larger than current largest
+    if (right < n && arr[right] > arr[largest])
+        largest = right;
+
+    // If largest is not root
+    if (largest != i) {
+        swap(arr[i], arr[largest]);   // Swap
+        heapify(arr, n, largest);     // Recursively heapify the affected subtree
+    }
+}
