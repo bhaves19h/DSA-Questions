@@ -1,0 +1,59 @@
+In-degree (kitne edge aa rahe hain node par) sab nodes ka calculate karo.
+
+Jinke in-degree = 0 ho, unhe queue mein daal do.
+
+Queue se ek-ek node nikaalo:
+
+us node ko answer list mein daalo.
+
+uske connected nodes ke in-degree ko 1 kam karo.
+
+agar kisi ka in-degree 0 ho jaaye, to usse queue mein daal do.
+
+Jab tak queue khatam na ho, repeat karo.
+
+code-->
+
+
+class Solution {
+public:
+    // Function to return list containing vertices in Topological order.
+    vector<int> topoSort(int V, vector<int> adj[]) {
+        int indegree[V] = {0};
+
+        // Step 1: Compute indegree of each node
+        for (int i = 0; i < V; i++) {
+            for (auto it : adj[i]) {
+                indegree[it]++;
+            }
+        }
+
+        // Step 2: Push nodes with indegree 0 into the queue
+        queue<int> q;
+        for (int i = 0; i < V; i++) {
+            if (indegree[i] == 0) {
+                q.push(i);
+            }
+        }
+
+        // Step 3: Perform BFS
+        vector<int> topo;
+        while (!q.empty()) {
+            int node = q.front();
+            q.pop();
+            topo.push_back(node);
+
+            // Decrease indegree of neighbours
+            for (auto it : adj[node]) {
+                indegree[it]--;
+                if (indegree[it] == 0) {
+                    q.push(it);
+                }
+            }
+        }
+
+        return topo;
+    }
+};
+
+
