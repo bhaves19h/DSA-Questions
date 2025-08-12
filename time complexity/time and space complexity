@@ -1,0 +1,41 @@
+Notation	Name	Example	Notes
+O(1)	Constant Time	Access array index, push/pop stack	Fastest possible
+O(log n)	Logarithmic Time	Binary search, balanced BST search	Grows very slowly
+O(n)	Linear Time	Traverse array, find max/min	Directly proportional to n
+O(n log n)	Linearithmic Time	Merge sort, quicksort avg, heapsort	Typical for efficient sorts
+O(n²)	Quadratic Time	Nested loops over n elements	Often too slow for large n
+O(n³)	Cubic Time	Triple nested loops	Avoid for large n
+O(2ⁿ)	Exponential Time	Subset generation, naive recursion in Fibonacci	Becomes huge very fast
+O(n!)	Factorial Time	Traveling salesman brute force	Impractical for n > 10
+
+📌 Space Complexity Chart
+Notation	Example	Notes
+O(1)	In-place swap, two-pointer algorithms	Minimal extra memory
+O(log n)	Recursion depth in binary search	Often from divide & conquer
+O(n)	Storing array, queue, DFS visited[]	Linear extra memory
+O(n log n)	Segment trees, merge sort temp arrays	Common in advanced DS
+O(n²)	DP tables, adjacency matrix for dense graph	Memory heavy
+
+📌 Common Algorithm Complexities
+Algorithm / Operation	Time Complexity	Space Complexity
+Array Access (index)	O(1)	O(1)
+Array Search (linear)	O(n)	O(1)
+Binary Search	O(log n)	O(1)
+Sorting (Merge/Quick avg)	O(n log n)	O(log n) or O(n)
+BFS / DFS (graph)	O(V + E)	O(V)
+Dijkstra (PQ)	O((V + E) log V)	O(V + E)
+Matrix Multiplication (naive)	O(n³)	O(n²)
+Generating All Subsets	O(2ⁿ)	O(n)
+
+📌 Growth Rate Intuition
+O(1) → constant, fastest
+
+O(log n) → doubles input, +1 step
+
+O(n) → doubles input, doubles steps
+
+O(n log n) → best you can get for sorting
+
+O(n²) & above → dangerous for n > 10⁵
+
+O(2ⁿ), O(n!) → only feasible for very small n
