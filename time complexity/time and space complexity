@@ -1,41 +1,35 @@
-Notation	Name	Example	Notes
-O(1)	Constant Time	Access array index, push/pop stack	Fastest possible
-O(log n)	Logarithmic Time	Binary search, balanced BST search	Grows very slowly
-O(n)	Linear Time	Traverse array, find max/min	Directly proportional to n
-O(n log n)	Linearithmic Time	Merge sort, quicksort avg, heapsort	Typical for efficient sorts
-O(n²)	Quadratic Time	Nested loops over n elements	Often too slow for large n
-O(n³)	Cubic Time	Triple nested loops	Avoid for large n
-O(2ⁿ)	Exponential Time	Subset generation, naive recursion in Fibonacci	Becomes huge very fast
-O(n!)	Factorial Time	Traveling salesman brute force	Impractical for n > 10
+Time Complexity Table
 
-📌 Space Complexity Chart
-Notation	Example	Notes
-O(1)	In-place swap, two-pointer algorithms	Minimal extra memory
-O(log n)	Recursion depth in binary search	Often from divide & conquer
-O(n)	Storing array, queue, DFS visited[]	Linear extra memory
-O(n log n)	Segment trees, merge sort temp arrays	Common in advanced DS
-O(n²)	DP tables, adjacency matrix for dense graph	Memory heavy
+| Big-O      | Name         | Example Algorithms / Operations                | Notes                          |
+|------------|--------------|------------------------------------------------|---------------------------------|
+| O(1)       | Constant     | Array access, push/pop stack, hash map lookup  | Fastest possible                |
+| O(log n)   | Logarithmic  | Binary search, BST search                      | Grows very slowly               |
+| O(n)       | Linear       | Traversing array, finding max/min              | Proportional to n               |
+| O(n log n) | Linearithmic | Merge sort, quicksort (avg), heapsort          | Common for efficient sorts      |
+| O(n²)      | Quadratic    | Nested loops, bubble sort, insertion sort      | Too slow for large n            |
+| O(n³)      | Cubic        | Triple nested loops, Floyd–Warshall algorithm  | Avoid for large n               |
+| O(2ⁿ)      | Exponential  | Generating subsets, naive Fibonacci recursion  | Huge growth                      |
+| O(n!)      | Factorial    | Traveling salesman brute force                 | Impractical for n > 10           |
 
-📌 Common Algorithm Complexities
-Algorithm / Operation	Time Complexity	Space Complexity
-Array Access (index)	O(1)	O(1)
-Array Search (linear)	O(n)	O(1)
-Binary Search	O(log n)	O(1)
-Sorting (Merge/Quick avg)	O(n log n)	O(log n) or O(n)
-BFS / DFS (graph)	O(V + E)	O(V)
-Dijkstra (PQ)	O((V + E) log V)	O(V + E)
-Matrix Multiplication (naive)	O(n³)	O(n²)
-Generating All Subsets	O(2ⁿ)	O(n)
+Space Complexity Table
 
-📌 Growth Rate Intuition
-O(1) → constant, fastest
+| Big-O      | Example                                      | Notes                       |
+|------------|----------------------------------------------|-----------------------------|
+| O(1)       | In-place swap, two-pointer method            | Minimal memory              |
+| O(log n)   | Recursion in binary search                   | Comes from divide & conquer |
+| O(n)       | Storing array, DFS visited[]                 | Linear memory               |
+| O(n log n) | Merge sort temporary arrays                  | Common in advanced DS       |
+| O(n²)      | DP tables, adjacency matrix (graph)          | Memory heavy                |
 
-O(log n) → doubles input, +1 step
+Common Algorithm Complexities
 
-O(n) → doubles input, doubles steps
-
-O(n log n) → best you can get for sorting
-
-O(n²) & above → dangerous for n > 10⁵
-
-O(2ⁿ), O(n!) → only feasible for very small n
+| Algorithm / Operation           | Time Complexity      | Space Complexity |
+|----------------------------------|----------------------|------------------|
+| Array Access (index)             | O(1)                 | O(1)             |
+| Array Search (linear)            | O(n)                 | O(1)             |
+| Binary Search                    | O(log n)             | O(1)             |
+| Sorting (Merge / Quick avg)      | O(n log n)           | O(log n) / O(n)  |
+| BFS / DFS (graph)                | O(V + E)             | O(V)             |
+| Dijkstra (Priority Queue)        | O((V + E) log V)     | O(V + E)         |
+| Matrix Multiplication (naive)    | O(n³)                | O(n²)            |
+| Generating All Subsets           | O(2ⁿ)                | O(n)             |
