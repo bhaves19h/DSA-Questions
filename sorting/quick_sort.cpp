@@ -1,3 +1,4 @@
+//TC = nOlogn
 class Solution {
 public:
     int partition(vector<int>& arr, int st, int end) {
