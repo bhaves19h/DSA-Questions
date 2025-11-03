@@ -1,0 +1,21 @@
+LEET CODE LINKED LIST
+
+struct ListNode{
+    int val;
+    ListNode *next;
+    ListNode():val(0) ,next(nullptr) {}
+    ListNode(int x):val(x), next(nullptr){}
+    ListNode(int x , ListNode *next): val(x), next(next){}
+};
+
+NORMAL CODE
+
+Struct Node {
+    int data;
+    Node* next;
+    
+    Node(int val) {  // Constructor
+        data = val;
+        next = nullptr;
+    }
+};
