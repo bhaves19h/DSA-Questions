@@ -1,0 +1,11 @@
+whenver you see count ,subarray,substring ,repeating_char.
+
+declare an unordered_map 
+count its apperance of the particular element
+check the condition if its fit in the window according to the given condition 
+
+mp[s[start]]--; shrink from the left side
+if(mp[s[start]] == 0 ) mp.erase(s[start]) remoev the starting charcter from the map
+increase the start conunter and move to the next charcter in the map
+
+ans += i-start+1; to shift the right window length the length will be our answer.
