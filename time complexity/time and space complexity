@@ -11,6 +11,9 @@ Time Complexity Table
 | O(2ⁿ)      | Exponential  | Generating subsets, naive Fibonacci recursion  | Huge growth                      |
 | O(n!)      | Factorial    | Traveling salesman brute force                 | Impractical for n > 10           |
 
+
+quick search O(mn)
+
 Space Complexity Table
 
 | Big-O      | Example                                      | Notes                       |
