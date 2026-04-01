@@ -13,7 +13,11 @@ Time Complexity Table
 
 
 quick search O(mn)
-
+bellman ford O(mn)
+topological O(n+m)
+floyd warshall O(n^3)
+lcs -dp - O(m*n)
+MST- O(mlogn)
 Space Complexity Table
 
 | Big-O      | Example                                      | Notes                       |
