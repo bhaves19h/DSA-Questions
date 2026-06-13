@@ -1,0 +1,25 @@
+#include <iostream>
+#include <bits/stdc++.h>
+
+using namespace std;
+int main(){
+    vector<int>nums = {0,1,0,2,0,3,0,4,0};
+    int n = nums.size();
+    vector<int>res;
+    for(int nu : nums){
+        if(nu == 0)continue;
+        else{
+            res.push_back(nu);
+        }
+    }
+    int k = res.size();
+    int diff = n-k;
+    while(diff > 0){
+        res.push_back(0);
+        diff--;
+    }
+    for(int z:res){
+        cout<<z<<" ";
+    }
+    return 0;
+}
