@@ -1,10 +1,13 @@
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        // MOORE'S VOTING ALGORITHM
-        int n = nums.size();
-        int count = 0;
-        /*int ans = 0;
+      //  int n = nums.size();
+        sort(nums.begin() , nums.end());
+        return (nums[nums.size()/2]);
+    }
+};
+  // MOORE'S VOTING ALGORITHM
+ /*int ans = 0;
         for (int i = 0; i < nums.size();++i) { // count += num == ans ? 1 : -1; ->IF NUMS OF I IS EQUAL TO
                     // THE ANSWER RETURN CNT +1 ELSE -1
             if (count == 0) {
@@ -17,7 +20,3 @@ public:
             }
         }
         return ans;*/
-        sort(nums.begin() , nums.end());
-        return (nums[n/2]);
-    }
-};
