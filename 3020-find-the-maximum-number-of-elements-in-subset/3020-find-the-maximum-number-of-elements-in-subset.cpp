@@ -11,10 +11,9 @@ public:
         for (auto& f : freq) {
             int n = 0;
             long long x = f.first;
-
             int sq = sqrt(x);
-            if (sq * sq == x && freq.count(sq) && freq[sq] > 1)
-                continue;
+            if (sq * sq == x && freq.count(sq) && freq[sq] > 1){
+                continue;}
 
             while (x < INT_MAX && freq.count(x) && freq[x] > 1) {
                 n += 2;
