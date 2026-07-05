@@ -1,12 +1,6 @@
 class Solution {
 public:
     int minScore(int n, vector<vector<int>>& roads) {
-       /* int mini = INT_MAX;
-        int x = roads.size();
-        for(int i = 0 ; i<x ; i++){
-            mini = min(roads[i][2],mini);
-        }
-        return mini;*/
         vector<vector<pair<int,int>>>adj(n+1);
         for(auto &road : roads){
             int u = road[0];
@@ -39,3 +33,10 @@ public:
         return ans;
     }
 };
+
+   /* int mini = INT_MAX;
+        int x = roads.size();
+        for(int i = 0 ; i<x ; i++){
+            mini = min(roads[i][2],mini);
+        }
+        return mini;*/
