@@ -5,11 +5,11 @@ public:
         sort(dummy.begin(), dummy.end());
         int n = arr.size();
         unordered_map<int, int> mp;
-        int x = 1;
+        int x=0 ;
 
         for (int num : dummy) {
             if (!mp.count(num))
-                mp[num] = x++;
+                mp[num] = ++x;
         }
 
         for (auto& p : arr) {
